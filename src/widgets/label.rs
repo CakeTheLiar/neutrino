@@ -170,28 +170,33 @@ impl Label {
     }
 
     /// Set the text
-    pub fn set_text(&mut self, text: &str) {
+    pub fn set_text(&mut self, text: &str) -> &mut Self {
         self.state.set_text(text);
+        self
     }
 
     /// Set the stretched flag to true
-    pub fn set_stretched(&mut self) {
+    pub fn set_stretched(&mut self) -> &mut Self {
         self.state.set_stretched(true);
+        self
     }
 
     /// Set the unselectable flag to true
-    pub fn set_unselectable(&mut self) {
+    pub fn set_unselectable(&mut self) -> &mut Self {
         self.state.set_unselectable(true);
+        self
     }
 
     /// Set the listener
-    pub fn set_listener(&mut self, listener: Box<dyn LabelListener>) {
+    pub fn set_listener(&mut self, listener: Box<dyn LabelListener>) -> &mut Self {
         self.listener = Some(listener);
+        self
     }
 
     /// Set the style
-    pub fn set_style(&mut self, style: &str) {
+    pub fn set_style(&mut self, style: &str) -> &mut Self {
         self.state.set_style(style);
+        self
     }
 }
 
