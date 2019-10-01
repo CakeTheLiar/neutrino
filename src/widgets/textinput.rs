@@ -15,6 +15,7 @@ use crate::widgets::widget::Widget;
 /// stretched: bool
 /// style: String
 /// ```
+
 pub struct TextInputState {
     value: String,
     input_type: InputType,
@@ -23,6 +24,20 @@ pub struct TextInputState {
     disabled: bool,
     stretched: bool,
     style: String,
+}
+
+impl Default for TextInputState {
+    fn default() -> Self {
+        Self {
+            value: Default::default(),
+            input_type: Default::default(),
+            placeholder: Default::default(),
+            size: 10,
+            disabled: Default::default(),
+            stretched: Default::default(),
+            style: Default::default(),
+        }
+    }
 }
 
 impl TextInputState {
@@ -199,6 +214,8 @@ pub trait TextInputListener {
 ///     my_textinput.set_listener(Box::new(my_listener));
 /// }
 /// ```
+
+#[derive(Default)]
 pub struct TextInput {
     name: String,
     state: TextInputState,
@@ -210,16 +227,7 @@ impl TextInput {
     pub fn new(name: &str) -> Self {
         Self {
             name: name.to_string(),
-            state: TextInputState {
-                value: "".to_string(),
-                input_type: InputType::Text,
-                placeholder: "".to_string(),
-                size: 10,
-                disabled: false,
-                stretched: false,
-                style: "".to_string(),
-            },
-            listener: None,
+            .. Default::default()
         }
     }
 
@@ -333,6 +341,12 @@ impl Widget for TextInput {
 pub enum InputType {
     Text,
     Password,
+}
+
+impl Default for InputType {
+    fn default() -> Self {
+        InputType::Text
+    }
 }
 
 impl InputType {
