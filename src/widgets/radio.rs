@@ -13,6 +13,8 @@ use crate::widgets::widget::Widget;
 /// stretched: bool
 /// style: String
 /// ```
+
+#[derive(Default)]
 pub struct RadioState {
     choices: Vec<String>,
     selected: u32,
@@ -190,6 +192,8 @@ pub trait RadioListener {
 ///     my_radio.set_listener(Box::new(my_listener));
 /// }
 /// ```
+
+#[derive(Default)]
 pub struct Radio {
     name: String,
     state: RadioState,
@@ -201,14 +205,7 @@ impl Radio {
     pub fn new(name: &str) -> Self {
         Self {
             name: name.to_string(),
-            state: RadioState {
-                choices: vec!["Choice 1".to_string(), "Choice 2".to_string()],
-                selected: 0,
-                disabled: false,
-                stretched: false,
-                style: "".to_string(),
-            },
-            listener: None,
+            .. Default::default()
         }
     }
 
