@@ -12,11 +12,23 @@ use crate::widgets::widget::Widget;
 /// unselectable: bool
 /// style: String
 /// ```
+
 pub struct LabelState {
     text: String,
     stretched: bool,
     unselectable: bool,
     style: String,
+}
+
+impl Default for LabelState {
+    fn default() -> Self {
+        Self {
+            text: "Label".to_string(),
+            stretched: Default::default(),
+            unselectable: Default::default(),
+            style: Default::default(),
+        }
+    }
 }
 
 impl LabelState {
@@ -148,6 +160,8 @@ pub trait LabelListener {
 ///     my_label.set_listener(Box::new(my_listener));
 /// }
 /// ```
+
+#[derive(Default)]
 pub struct Label {
     name: String,
     state: LabelState,
@@ -159,13 +173,7 @@ impl Label {
     pub fn new(name: &str) -> Self {
         Self {
             name: name.to_string(),
-            state: LabelState {
-                text: "Label".to_string(),
-                stretched: false,
-                unselectable: false,
-                style: "".to_string(),
-            },
-            listener: None,
+            .. Default::default()
         }
     }
 
