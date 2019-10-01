@@ -198,33 +198,39 @@ impl CheckBox {
     }
 
     /// Set the text
-    pub fn set_text(&mut self, text: &str) {
+    pub fn set_text(&mut self, text: &str) -> &mut Self {
         self.state.set_text(text);
+        self
     }
 
     /// Set the checked flag to true
-    pub fn set_checked(&mut self) {
+    pub fn set_checked(&mut self) -> &mut Self {
         self.state.set_checked(true);
+        self
     }
 
     /// Set the disabled flag to true
-    pub fn set_disabled(&mut self) {
+    pub fn set_disabled(&mut self) -> &mut Self {
         self.state.set_disabled(true);
+        self
     }
 
     /// Set the stretched flag to true
-    pub fn set_stretched(&mut self) {
+    pub fn set_stretched(&mut self) -> &mut Self {
         self.state.set_stretched(true);
+        self
     }
 
     /// Set the listener
-    pub fn set_listener(&mut self, listener: Box<dyn CheckBoxListener>) {
+    pub fn set_listener(&mut self, listener: Box<dyn CheckBoxListener>) -> &mut Self {
         self.listener = Some(listener);
+        self
     }
 
     /// Set the style
-    pub fn set_style(&mut self, style: &str) {
+    pub fn set_style(&mut self, style: &str) -> &mut Self {
         self.state.set_style(style);
+        self
     }
 }
 
