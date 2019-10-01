@@ -229,22 +229,28 @@ pub struct Window {
     timer: Option<u32>,
 }
 
-impl Window {
-    /// Create a Window
-    pub fn new() -> Self {
+impl Default for Window {
+    fn default() -> Self {
         Self {
             title: "Untitled".to_string(),
             width: 640,
             height: 480,
-            resizable: false,
-            debug: false,
+            resizable: Default::default(),
+            debug: Default::default(),
             theme: Theme::Default,
-            style: "".to_string(),
-            child: None,
-            menubar: None,
-            listener: None,
-            timer: None,
+            style: Default::default(),
+            child: Default::default(),
+            menubar: Default::default(),
+            listener: Default::default(),
+            timer: Default::default(),
         }
+    }
+}
+
+impl Window {
+    /// Create a Window
+    pub fn new() -> Self {
+        Default::default()
     }
 
     /// Set the child
