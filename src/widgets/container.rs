@@ -13,6 +13,7 @@ use crate::widgets::widget::Widget;
 /// alignment: Alignment
 /// style: String
 /// ```
+
 pub struct ContainerState {
     children: Vec<Box<dyn Widget>>,
     direction: Direction,
@@ -20,6 +21,19 @@ pub struct ContainerState {
     alignment: Alignment,
     stretched: bool,
     style: String,
+}
+
+impl Default for ContainerState {
+    fn default() -> Self {
+        Self {
+            children: Default::default(),
+            direction: Direction::Vertical,
+            position: Default::default(),
+            alignment: Default::default(),
+            stretched: Default::default(),
+            style: Default::default(),
+        }
+    }
 }
 
 impl ContainerState {
@@ -186,6 +200,8 @@ pub trait ContainerListener {
 ///     my_container.set_listener(Box::new(my_listener));
 /// }
 /// ```
+
+#[derive(Default)]
 pub struct Container {
     name: String,
     state: ContainerState,
@@ -197,15 +213,7 @@ impl Container {
     pub fn new(name: &str) -> Self {
         Self {
             name: name.to_string(),
-            state: ContainerState {
-                children: vec![],
-                direction: Direction::Vertical,
-                position: Position::Start,
-                alignment: Alignment::None,
-                stretched: false,
-                style: "".to_string(),
-            },
-            listener: None,
+            .. Default::default()
         }
     }
 
@@ -306,6 +314,12 @@ pub enum Direction {
     Vertical,
 }
 
+impl Default for Direction {
+    fn default() -> Self {
+        Direction::Horizontal
+    }
+}
+
 impl Direction {
     // Return the CSS class corresponding to the direction
     pub fn css(&self) -> &str {
@@ -338,6 +352,12 @@ pub enum Position {
     End,
     Between,
     Around,
+}
+
+impl Default for Position {
+    fn default() -> Self {
+        Position::Start
+    }
 }
 
 impl Position {
@@ -377,6 +397,12 @@ pub enum Alignment {
     Center,
     Start,
     End,
+}
+
+impl Default for Alignment {
+    fn default() -> Self {
+        Alignment::None
+    }
 }
 
 impl Alignment {
