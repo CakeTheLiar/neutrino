@@ -213,38 +213,45 @@ impl Range {
     }
 
     /// Set the min
-    pub fn set_min(&mut self, min: i32) {
+    pub fn set_min(&mut self, min: i32) -> &mut Self {
         self.state.set_min(min);
+        self
     }
 
     /// Set the max
-    pub fn set_max(&mut self, max: i32) {
+    pub fn set_max(&mut self, max: i32) -> &mut Self {
         self.state.set_max(max);
+        self
     }
 
     /// Set the value
-    pub fn set_value(&mut self, value: i32) {
+    pub fn set_value(&mut self, value: i32) -> &mut Self {
         self.state.set_value(value);
+        self
     }
 
     /// Set the disabled flag to true
-    pub fn set_disabled(&mut self) {
+    pub fn set_disabled(&mut self) -> &mut Self {
         self.state.set_disabled(true);
+        self
     }
 
     /// Set the stretched flag to true
-    pub fn set_stretched(&mut self) {
+    pub fn set_stretched(&mut self) -> &mut Self {
         self.state.set_stretched(true);
+        self
     }
 
     /// Set the listener
-    pub fn set_listener(&mut self, listener: Box<dyn RangeListener>) {
+    pub fn set_listener(&mut self, listener: Box<dyn RangeListener>) -> &mut Self {
         self.listener = Some(listener);
+        self
     }
 
     /// Set the style
-    pub fn set_style(&mut self, style: &str) {
+    pub fn set_style(&mut self, style: &str) -> &mut Self {
         self.state.set_style(style);
+        self
     }
 }
 
