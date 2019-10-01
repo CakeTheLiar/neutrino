@@ -16,6 +16,8 @@ use crate::widgets::widget::Widget;
 /// stretched: bool
 /// style: String
 /// ```
+
+#[derive(Default)]
 pub struct ButtonState {
     text: Option<String>,
     icon_data: Option<String>,
@@ -183,6 +185,8 @@ pub trait ButtonListener {
 ///     my_button.set_listener(Box::new(my_listener));
 /// }
 /// ```
+
+#[derive(Default)]
 pub struct Button {
     name: String,
     state: ButtonState,
@@ -194,15 +198,7 @@ impl Button {
     pub fn new(name: &str) -> Self {
         Self {
             name: name.to_string(),
-            state: ButtonState {
-                text: None,
-                icon_data: None,
-                icon_extension: None,
-                disabled: false,
-                stretched: false,
-                style: "".to_string(),
-            },
-            listener: None,
+            .. Default::default()
         }
     }
 
