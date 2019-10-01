@@ -236,8 +236,9 @@ impl Tabs {
     }
 
     /// Set the selected index
-    pub fn set_selected(&mut self, selected: u32) {
+    pub fn set_selected(&mut self, selected: u32) -> &mut Self {
         self.state.set_selected(selected);
+        self
     }
 
     /// Set the direction
@@ -262,28 +263,33 @@ impl Tabs {
     /// | Tab 2 |             |
     /// +-------+-------------+
     /// ```
-    pub fn set_direction(&mut self, direction: Direction) {
+    pub fn set_direction(&mut self, direction: Direction) -> &mut Self {
         self.state.set_direction(direction);
+        self
     }
 
     /// Set the stretched flag to true
-    pub fn set_stretched(&mut self) {
+    pub fn set_stretched(&mut self) -> &mut Self {
         self.state.set_stretched(true);
+        self
     }
 
     /// Set the listener
-    pub fn set_listener(&mut self, listener: Box<dyn TabsListener>) {
+    pub fn set_listener(&mut self, listener: Box<dyn TabsListener>) -> &mut Self {
         self.listener = Some(listener);
+        self
     }
 
     /// Set the style
-    pub fn set_style(&mut self, style: &str) {
+    pub fn set_style(&mut self, style: &str) -> &mut Self {
         self.state.set_style(style);
+        self
     }
 
     /// Add a tab
-    pub fn add(&mut self, name: &str, child: Box<dyn Widget>) {
+    pub fn add(&mut self, name: &str, child: Box<dyn Widget>) -> &mut Self {
         self.state.add(name, child);
+        self
     }
 }
 
