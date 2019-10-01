@@ -21,6 +21,18 @@ pub struct ProgressBarState {
     style: String,
 }
 
+impl Default for ProgressBarState {
+    fn default() -> Self {
+        Self {
+            min: 0,
+            max: 100,
+            value: Default::default(),
+            stretched: Default::default(),
+            style: Default::default(),
+        }
+    }
+}
+
 impl ProgressBarState {
     /// Get the min
     pub fn min(&self) -> i32 {
@@ -168,6 +180,8 @@ pub trait ProgressBarListener {
 ///     my_progressbar.set_listener(Box::new(my_listener));
 /// }
 /// ```
+
+#[derive(Default)]
 pub struct ProgressBar {
     name: String,
     state: ProgressBarState,
@@ -179,14 +193,7 @@ impl ProgressBar {
     pub fn new(name: &str) -> Self {
         Self {
             name: name.to_string(),
-            state: ProgressBarState {
-                min: 0,
-                max: 100,
-                value: 0,
-                stretched: false,
-                style: "".to_string(),
-            },
-            listener: None,
+            .. Default::default()
         }
     }
 
