@@ -8,6 +8,8 @@ use crate::utils::event::Event;
 /// selected_item: Option<u32>
 /// selected_function: Option<u32
 /// ```
+
+#[derive(Default)]
 pub struct MenuBarState {
     selected_item: Option<u32>,
     selected_function: Option<u32>,
@@ -129,6 +131,8 @@ pub trait MenuBarListener {
 ///     my_menubar.add(file);
 /// }
 /// ```
+
+#[derive(Default)]
 pub struct MenuBar {
     items: Vec<MenuItem>,
     state: MenuBarState,
@@ -138,14 +142,7 @@ pub struct MenuBar {
 impl MenuBar {
     /// Create a MenuBar
     pub fn new() -> Self {
-        Self {
-            items: vec![],
-            state: MenuBarState {
-                selected_item: None,
-                selected_function: None,
-            },
-            listener: None,
-        }
+        Default::default()
     }
 
     /// Set the listener
@@ -236,6 +233,8 @@ impl MenuBar {
 /// name: name.to_string()
 /// functions: vec![]
 /// ```
+
+#[derive(Default)]
 pub struct MenuItem {
     name: String,
     functions: Vec<MenuFunction>,
@@ -246,7 +245,7 @@ impl MenuItem {
     pub fn new(name: &str) -> Self {
         Self {
             name: name.to_string(),
-            functions: vec![],
+            .. Default::default()
         }
     }
 
@@ -297,6 +296,8 @@ impl MenuItem {
 /// name: name.to_string()
 /// shortcut: None
 /// ```
+
+#[derive(Default)]
 pub struct MenuFunction {
     name: String,
     shortcut: Option<String>,
@@ -307,7 +308,7 @@ impl MenuFunction {
     pub fn new(name: &str) -> Self {
         Self {
             name: name.to_string(),
-            shortcut: None,
+            .. Default::default()
         }
     }
 
