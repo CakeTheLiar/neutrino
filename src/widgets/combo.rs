@@ -226,38 +226,45 @@ impl Combo {
     }
 
     /// Set the choices
-    pub fn set_choices(&mut self, choices: Vec<&str>) {
+    pub fn set_choices(&mut self, choices: Vec<&str>) -> &mut Self {
         self.state.set_choices(choices);
+        self
     }
 
     /// Set the index of the selected choice
-    pub fn set_selected(&mut self, selected: u32) {
+    pub fn set_selected(&mut self, selected: u32) -> &mut Self {
         self.state.set_selected(selected);
+        self
     }
 
     /// Set the opened flag to true
-    pub fn set_opened(&mut self) {
+    pub fn set_opened(&mut self) -> &mut Self {
         self.state.set_opened(true);
+        self
     }
 
     /// Set the disabled flag to true
-    pub fn set_disabled(&mut self) {
+    pub fn set_disabled(&mut self) -> &mut Self {
         self.state.set_disabled(true);
+        self
     }
 
     /// Set the stretched flag to true
-    pub fn set_stretched(&mut self) {
+    pub fn set_stretched(&mut self) -> &mut Self {
         self.state.set_stretched(true);
+        self
     }
 
     /// Set the listener
-    pub fn set_listener(&mut self, listener: Box<dyn ComboListener>) {
+    pub fn set_listener(&mut self, listener: Box<dyn ComboListener>) -> &mut Self {
         self.listener = Some(listener);
+        self
     }
 
     /// Set the style
-    pub fn set_style(&mut self, style: &str) {
+    pub fn set_style(&mut self, style: &str) -> &mut Self {
         self.state.set_style(style);
+        self
     }
 }
 
