@@ -23,6 +23,19 @@ pub struct RangeState {
     style: String,
 }
 
+impl Default for RangeState {
+    fn default() -> Self {
+        Self {
+            min: 0,
+            max: 100,
+            value: Default::default(),
+            disabled: Default::default(),
+            stretched: Default::default(),
+            style: Default::default(),
+        }
+    }
+}
+
 impl RangeState {
     /// Get the min
     pub fn min(&self) -> i32 {
@@ -189,6 +202,8 @@ pub trait RangeListener {
 ///     my_range.set_listener(Box::new(my_listener));
 /// }
 /// ```
+
+#[derive(Default)]
 pub struct Range {
     name: String,
     state: RangeState,
@@ -200,15 +215,7 @@ impl Range {
     pub fn new(name: &str) -> Self {
         Self {
             name: name.to_string(),
-            state: RangeState {
-                min: 0,
-                max: 100,
-                value: 0,
-                disabled: false,
-                stretched: false,
-                style: "".to_string(),
-            },
-            listener: None,
+            .. Default::default()
         }
     }
 
