@@ -224,43 +224,51 @@ impl TextInput {
     }
 
     /// Set the value
-    pub fn set_value(&mut self, value: &str) {
+    pub fn set_value(&mut self, value: &str) -> &mut Self {
         self.state.set_value(value);
+        self
     }
 
     /// Set the input_type
-    pub fn set_input_type(&mut self, input_type: InputType) {
+    pub fn set_input_type(&mut self, input_type: InputType) -> &mut Self {
         self.state.set_input_type(input_type);
+        self
     }
 
     /// Set the placeholder
-    pub fn set_placeholder(&mut self, placeholder: &str) {
+    pub fn set_placeholder(&mut self, placeholder: &str) -> &mut Self {
         self.state.set_placeholder(placeholder);
+        self
     }
 
     /// Set the size
-    pub fn set_size(&mut self, size: u32) {
+    pub fn set_size(&mut self, size: u32) -> &mut Self {
         self.state.set_size(size);
+        self
     }
 
     /// Set the stretched flag to true
-    pub fn set_stretched(&mut self) {
+    pub fn set_stretched(&mut self) -> &mut Self {
         self.state.set_stretched(true);
+        self
     }
 
     /// Set the disabled flag to true
-    pub fn set_disabled(&mut self) {
+    pub fn set_disabled(&mut self) -> &mut Self {
         self.state.set_disabled(true);
+        self
     }
 
     /// Set the listener
-    pub fn set_listener(&mut self, listener: Box<dyn TextInputListener>) {
+    pub fn set_listener(&mut self, listener: Box<dyn TextInputListener>) -> &mut Self {
         self.listener = Some(listener);
+        self
     }
 
     /// Set the style
-    pub fn set_style(&mut self, style: &str) {
+    pub fn set_style(&mut self, style: &str) -> &mut Self {
         self.state.set_style(style);
+        self
     }
 }
 
