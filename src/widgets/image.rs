@@ -224,28 +224,33 @@ impl Image {
     }
 
     /// Set the background color
-    pub fn set_background(&mut self, background: &str) {
+    pub fn set_background(&mut self, background: &str) -> &mut Self {
         self.state.set_background(background);
+        self
     }
 
     /// Set the keep_ratio_aspect flag to true
-    pub fn set_keep_ratio_aspect(&mut self) {
+    pub fn set_keep_ratio_aspect(&mut self) -> &mut Self {
         self.state.set_keep_ratio_aspect(true);
+        self
     }
 
     /// Set the stretched flag to true
-    pub fn set_stretched(&mut self) {
+    pub fn set_stretched(&mut self) -> &mut Self {
         self.state.set_stretched(true);
+        self
     }
 
     /// Set the listener
-    pub fn set_listener(&mut self, listener: Box<dyn ImageListener>) {
+    pub fn set_listener(&mut self, listener: Box<dyn ImageListener>) -> &mut Self {
         self.listener = Some(listener);
+        self
     }
 
     /// Set the style
-    pub fn set_style(&mut self, style: &str) {
+    pub fn set_style(&mut self, style: &str) -> &mut Self {
         self.state.set_style(style);
+        self
     }
 }
 
