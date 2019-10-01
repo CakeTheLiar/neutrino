@@ -16,6 +16,8 @@ use crate::widgets::widget::Widget;
 /// stretched: bool
 /// style: String
 /// ```
+
+#[derive(Default)]
 pub struct ImageState {
     data: String,
     extension: String,
@@ -182,6 +184,8 @@ pub trait ImageListener {
 ///     my_image.set_listener(Box::new(my_listener));
 /// }
 /// ```
+
+#[derive(Default)]
 pub struct Image {
     name: String,
     state: ImageState,
@@ -192,34 +196,26 @@ impl Image {
     /// Create an image from a path
     pub fn from_path(name: &str, path: &str) -> Self {
         let pixmap = Pixmap::from_path(path);
-        Self {
-            name: name.to_string(),
-            state: ImageState {
-                data: pixmap.data().to_string(),
-                extension: pixmap.extension().to_string(),
-                background: "black".to_string(),
-                keep_ratio_aspect: false,
-                stretched: false,
-                style: "".to_string(),
-            },
-            listener: None,
-        }
+        Self::from_pixmap(name, pixmap)
     }
 
     /// Create an image from an icon
     pub fn from_icon(name: &str, icon: Box<dyn Icon>) -> Self {
         let pixmap = Pixmap::from_icon(icon);
+        Self::from_pixmap(name, pixmap)
+    }
+
+    /// Create an image from a pixmap
+    pub fn from_pixmap(name: &str, pixmap: Pixmap) -> Self {
         Self {
             name: name.to_string(),
             state: ImageState {
                 data: pixmap.data().to_string(),
                 extension: pixmap.extension().to_string(),
                 background: "black".to_string(),
-                keep_ratio_aspect: false,
-                stretched: false,
-                style: "".to_string(),
+                .. Default::default()
             },
-            listener: None,
+            .. Default::default()
         }
     }
 
