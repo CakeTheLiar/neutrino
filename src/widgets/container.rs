@@ -22,6 +22,7 @@ pub struct ContainerState {
     style: String,
 }
 
+
 impl ContainerState {
     /// Get the children
     pub fn children(&self) -> &Vec<Box<dyn Widget>> {
@@ -210,39 +211,46 @@ impl Container {
     }
 
     /// Set the direction
-    pub fn set_direction(&mut self, direction: Direction) {
+    pub fn set_direction(&mut self, direction: Direction) -> &mut Self {
         self.state.set_direction(direction);
+        self
     }
 
     /// Set the position
-    pub fn set_position(&mut self, position: Position) {
+    pub fn set_position(&mut self, position: Position) -> &mut Self {
         self.state.set_position(position);
+        self
     }
 
     /// Set the alignment
-    pub fn set_alignment(&mut self, alignment: Alignment) {
+    pub fn set_alignment(&mut self, alignment: Alignment) -> &mut Self {
         self.state.set_alignment(alignment);
+        self
     }
 
     /// Set the stretched flag to true. Alignment needs to be set to
     /// Alignment::None (default) for the Container to stretch.
-    pub fn set_stretched(&mut self) {
+    pub fn set_stretched(&mut self) -> &mut Self {
         self.state.set_stretched(true);
+        self
     }
 
     /// Set the listener
-    pub fn set_listener(&mut self, listener: Box<dyn ContainerListener>) {
+    pub fn set_listener(&mut self, listener: Box<dyn ContainerListener>) -> &mut Self {
         self.listener.replace(listener);
+        self
     }
 
     /// Set the style
-    pub fn set_style(&mut self, style: &str) {
+    pub fn set_style(&mut self, style: &str) -> &mut Self {
         self.state.set_style(style);
+        self
     }
 
     /// Add a widget
-    pub fn add(&mut self, widget: Box<dyn Widget>) {
+    pub fn add(&mut self, widget: Box<dyn Widget>) -> &mut Self {
         self.state.add(widget);
+        self
     }
 }
 
