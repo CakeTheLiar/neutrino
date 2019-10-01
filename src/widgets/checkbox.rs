@@ -13,6 +13,8 @@ use crate::widgets::widget::Widget;
 /// stretched: bool
 /// style: String
 /// ```
+
+#[derive(Default)]
 pub struct CheckBoxState {
     text: String,
     checked: bool,
@@ -175,6 +177,8 @@ pub trait CheckBoxListener {
 ///     my_checkbox.set_listener(Box::new(my_listener));
 /// }
 /// ```
+
+#[derive(Default)]
 pub struct CheckBox {
     name: String,
     state: CheckBoxState,
@@ -186,14 +190,7 @@ impl CheckBox {
     pub fn new(name: &str) -> Self {
         Self {
             name: name.to_string(),
-            state: CheckBoxState {
-                text: "CheckBox".to_string(),
-                checked: false,
-                disabled: false,
-                stretched: false,
-                style: "".to_string(),
-            },
-            listener: None,
+            .. Default::default()
         }
     }
 
