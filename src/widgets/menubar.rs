@@ -149,13 +149,15 @@ impl MenuBar {
     }
 
     /// Set the listener
-    pub fn set_listener(&mut self, listener: Box<dyn MenuBarListener>) {
+    pub fn set_listener(&mut self, listener: Box<dyn MenuBarListener>) -> &mut Self {
         self.listener = Some(listener);
+        self
     }
 
     /// Add a MenuItem
-    pub fn add(&mut self, item: MenuItem) {
+    pub fn add(&mut self, item: MenuItem) -> &mut Self {
         self.items.push(item);
+        self
     }
 
     /// Return the HTML representation of the widget
