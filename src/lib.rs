@@ -248,56 +248,66 @@ impl Window {
     }
 
     /// Set the child
-    pub fn set_child(&mut self, widget: Box<dyn Widget>) {
+    pub fn set_child(&mut self, widget: Box<dyn Widget>) -> &mut Self {
         self.child = Some(widget);
+        self
     }
 
     /// Set the menubar
-    pub fn set_menubar(&mut self, menubar: MenuBar) {
+    pub fn set_menubar(&mut self, menubar: MenuBar) -> &mut Self {
         self.menubar = Some(menubar);
+        self
     }
 
     /// Set the title
-    pub fn set_title(&mut self, title: &str) {
+    pub fn set_title(&mut self, title: &str) -> &mut Self{
         self.title = title.to_string();
+        self
     }
 
     /// Set the size (width and height)
-    pub fn set_size(&mut self, width: i32, height: i32) {
+    pub fn set_size(&mut self, width: i32, height: i32) -> &mut Self{
         self.width = width;
         self.height = height;
+        self
     }
 
     /// Set the resizable flag to true
-    pub fn set_resizable(&mut self) {
+    pub fn set_resizable(&mut self) -> &mut Self {
         self.resizable = true;
+        self
     }
 
     /// Set the debug flag to true
-    pub fn set_debug(&mut self) {
+    pub fn set_debug(&mut self) -> &mut Self {
         self.debug = true;
+        self
     }
 
     /// Set the theme
-    pub fn set_theme(&mut self, theme: Theme) {
+    pub fn set_theme(&mut self, theme: Theme) -> &mut Self {
         self.theme = theme;
+        self
     }
 
     /// Set the style
-    pub fn set_style(&mut self, style: &str) {
+    pub fn set_style(&mut self, style: &str) -> &mut Self {
         self.style = scss_to_css(style);
+        self
     }
 
     /// Set the listener
-    pub fn set_listener(&mut self, listener: Box<dyn WindowListener>) {
+    pub fn set_listener(&mut self, listener: Box<dyn WindowListener>) -> &mut Self {
         self.listener = Some(listener);
+        self
     }
 
     /// Set the timer
     ///
     /// The app will send a Tick event with a defined period
-    pub fn set_timer(&mut self, period: u32) {
+    pub fn set_timer(&mut self, period: u32) -> &mut Self {
         self.timer = Some(period);
+        self
     }
 
     /// Render the menubar and widget tree
