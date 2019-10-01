@@ -15,6 +15,8 @@ use crate::widgets::widget::Widget;
 /// stretched: bool
 /// style: String
 /// ```
+
+#[derive(Default)]
 pub struct TabsState {
     titles: Vec<String>,
     children: Vec<Box<dyn Widget>>,
@@ -212,6 +214,8 @@ pub trait TabsListener {
 ///     my_tabs.set_listener(Box::new(my_listener));
 /// }
 /// ```
+
+#[derive(Default)]
 pub struct Tabs {
     name: String,
     state: TabsState,
@@ -223,15 +227,7 @@ impl Tabs {
     pub fn new(name: &str) -> Self {
         Self {
             name: name.to_string(),
-            state: TabsState {
-                titles: vec![],
-                children: vec![],
-                selected: 0,
-                direction: Direction::Horizontal,
-                stretched: false,
-                style: "".to_string(),
-            },
-            listener: None,
+            .. Default::default()
         }
     }
 
