@@ -14,6 +14,8 @@ use crate::widgets::widget::Widget;
 /// stretched: bool
 /// style: String
 /// ```
+
+#[derive(Default)]
 pub struct ComboState {
     choices: Vec<String>,
     selected: u32,
@@ -202,6 +204,8 @@ pub trait ComboListener {
 ///     my_combo.set_listener(Box::new(my_listener));
 /// }
 /// ```
+
+#[derive(Default)]
 pub struct Combo {
     name: String,
     state: ComboState,
@@ -213,15 +217,7 @@ impl Combo {
     pub fn new(name: &str) -> Self {
         Self {
             name: name.to_string(),
-            state: ComboState {
-                choices: vec!["Choice 1".to_string(), "Choice 2".to_string()],
-                selected: 0,
-                opened: false,
-                disabled: false,
-                stretched: false,
-                style: "".to_string(),
-            },
-            listener: None,
+            .. Default::default()
         }
     }
 
