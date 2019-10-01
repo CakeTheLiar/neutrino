@@ -207,33 +207,39 @@ impl Button {
     }
 
     /// Set the text
-    pub fn set_text(&mut self, text: &str) {
+    pub fn set_text(&mut self, text: &str) -> &mut Self {
         self.state.set_text(text);
+        self
     }
 
     /// Set the icon
-    pub fn set_icon(&mut self, icon: Box<dyn Icon>) {
+    pub fn set_icon(&mut self, icon: Box<dyn Icon>) -> &mut Self {
         self.state.set_icon(icon);
+        self
     }
 
     /// Set the disabled flag to true
-    pub fn set_disabled(&mut self) {
+    pub fn set_disabled(&mut self) -> &mut Self {
         self.state.set_disabled(true);
+        self
     }
 
     /// Set the stretched flag to true
-    pub fn set_stretched(&mut self) {
+    pub fn set_stretched(&mut self) -> &mut Self {
         self.state.set_stretched(true);
+        self
     }
 
     /// Set the listener
-    pub fn set_listener(&mut self, listener: Box<dyn ButtonListener>) {
+    pub fn set_listener(&mut self, listener: Box<dyn ButtonListener>) -> &mut Self {
         self.listener = Some(listener);
+        self
     }
 
     /// Set the style
-    pub fn set_style(&mut self, style: &str) {
+    pub fn set_style(&mut self, style: &str) -> &mut Self {
         self.state.set_style(style);
+        self
     }
 }
 
